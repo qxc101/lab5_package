@@ -89,7 +89,7 @@
   <joint name="base_to_wheel_${suffix}" type="continuous">
     <parent link="base"/>
     <child link="wheel_${suffix}"/>
-    <limit effort="1" velocity="1"/>
+    <limit effort="100" velocity="100"/>
   </joint>
 </xacro:macro>
 <xacro:xacro_name suffix="left" reflect="1" />

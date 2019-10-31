@@ -328,7 +328,7 @@
       <geometry>
         <cylinder length="0.05" radius="0.2"/>
       </geometry>
-      <origin rpy="-1.57079632679 0.0 0.0" xyz="0.1 -0.4 0.0"/>
+      <origin rpy="-1.57079632679 0.0 0.0" xyz="-0.1 -0.4 0.0"/>
     </visual>
   </link>
   <joint name="base_to_wheel_left" type="continuous">
@@ -341,7 +341,7 @@
       <geometry>
         <cylinder length="0.05" radius="0.2"/>
       </geometry>
-      <origin rpy="-1.57079632679 0.0 0.0" xyz="0.1 0.4 0.0"/>
+      <origin rpy="-1.57079632679 0.0 0.0" xyz="-0.1 0.4 0.0"/>
     </visual>
   </link>
   <joint name="base_to_wheel_right" type="continuous">
@@ -354,7 +354,7 @@
       <geometry>
         <cylinder length="0.05" radius="0.15"/>
       </geometry>
-      <origin rpy="-1.57079632679 0.0 0.0" xyz="0.1 0.0 0.0"/>
+      <origin rpy="-1.57079632679 0 0" xyz="0.1 0 0"/>
     </visual>
   </link>
   <joint name="base_to_wheel_center" type="continuous">

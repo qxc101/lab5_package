@@ -5,11 +5,16 @@
 	<arg name="use_new_xacro" default="false" />
 	<arg name="use_new_urdf" default="false" />
 	<arg name="accept_clock" default="false" />
+	<arg name="use_new" default="true" />
+	<arg name="config_name" default="config_map_view.rviz" />
 
-	<arg if="$(arg use_xacro)" name="filename" default="robot.xacro" />
-	<arg unless="$(arg use_xacro)" name="filename" default="robot.urdf" />
-	<arg if="$(arg use_new_xacro)" name="filename" default="new.xacro" />
-	<arg if="$(arg use_new_urdf)" name="filename" default="new.urdf" />
+	<arg if="$(arg use_new)" name="xacro_name" default="new.xacro" />
+	<arg unless="$(arg use_new)" name="xacro_name" default="robot.xacro" />
+	<arg if="$(arg use_new)" name="urdf_name" default="new.urdf" />
+	<arg unless="$(arg use_new)" name="urdf_name" default="robot.urdf" />
+
+	<arg if="$(arg use_xacro)" name="filename" default="$(arg xacro_name)" />
+	<arg unless="$(arg use_xacro)" name="filename" default="$(arg urdf_name)" />
 
 	<arg name="file" default="$(find lab4_package)/urdf/$(arg filename)" />
 	<param if="$(arg use_xacro)" name="robot_description" command="$(find xacro)/xacro.py --inorder $(arg file)" />
@@ -17,7 +22,7 @@
 	<node if="$(arg use_robot_state_publisher)" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
 
 	<node if="$(arg accept_clock)" pkg="rviz" type="rviz" name="rviz" args="-d $(find lab4_package)/config/config2.rviz" required="true"/>
-	<node unless="$(arg accept_clock)" pkg="rviz" type="rviz" name="rviz" args="-d $(find lab4_package)/config/config2.rviz" required="true"/>
+	<node unless="$(arg accept_clock)" pkg="rviz" type="rviz" name="rviz" args="-d $(find lab4_package)/config/config_map_view.rviz" required="true"/>
 
         <param if="$(arg gui)" name="use_gui" value="$(arg gui)"/>
 	<node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
